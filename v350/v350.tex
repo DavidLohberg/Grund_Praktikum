@@ -1,0 +1,520 @@
+\input{header.tex}
+\input{commands.tex}
+
+\subject{VERSUCH 350}
+\title{Digitale Bauteile}
+\date{
+  Durchführung: 20.10.2026
+  \hspace{3em}
+  Abgabe: 03.11.2026
+}
+\usepackage{subcaption}
+\usepackage[section, below]{placeins}
+\usepackage[]{caption} % Captions schöner machen
+\FloatBarrier
+\usepackage{comment}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+%\input{content/theorie.tex}
+%\input{content/durchfuehrung.tex}
+%\input{content/auswertung.tex}
+%\input{content/diskussion.tex}
+\section{Theorie}
+\subsection{Logik und Logikpegel}
+Wie digitale Bauelemente Signale annehmen, interpretieren und umwandeln, wird durch eine bestimmte Logik und einen Logikpegel festgelegt.
+\subsubsection{Logik}
+    Die Verknüpfung digitaler Bauelemente und ihrer Signale 
+    geschieht durch die logischen Zustände „0“ für „nicht-wahr“ und „1“ für „wahr“.
+  \subsubsection{Logikpegel}
+    Digitale Schaltungen bestehen aus Transistorschaltungen,
+    die je nach verwendeter Halbleitertechnologie auf bestimmte Spannungen reagieren. 
+    Beispiele sind dafür TTL oder CMOS, 
+    die bei unterschiedlich breiten Voltbereichen ein Low-Level 
+    bzw. High-Level Signal ausgeben. 
+    Wie diese Signale interpretiert werden,   
+    hängt von der Art der verbauten Logik ab. 
+    Eine positive Logik übersetzt ein High-Level Signal als 
+    logischen Zustand „1“ und ein Low-Level Signal als „0“.
+    Bei einer negativen Logik ist dies umgekehrt, 
+    also wird ein High-Level Signal zu einer „0“ 
+    und ein Low-Level Signal zu einer „1“. \cite{digbau}
+\subsection{Gatter-Arten}
+  Es gibt verschiedene Arten von Gattern, 
+  die Signale in unterschiedlicher Weise umwandeln.\cite{digbau}
+  \subsubsection{NOT-Gatter}
+    Das NOT-Gatter wirkt als Negation des Signals.
+    Es führt bei einem Eingangssignal „0“ zu einem Ausgangssignal „1“ 
+    und bei einem Eingangssignal „1“ zu einem Ausgangssignal „0“.
+    Wie dieses Gatter in einem Schaltplan dargestellt wird, lässt sich aus der unten stehenden Abbildung erkennen.
+    \begin{figure}[H]
+       \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{NOT-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european not port] at (2, 0.4){};
+	        \node[notcirc] at (2.62, 0.4){};
+	        \node[notcirc] at (-0.15, 0.4){};
+          \node at (-0.6,0.4){$E$};
+          \node at (3, 0.45){$A$};
+          \draw (-0.075, 0.4) -- (0.23, 0.4);
+	        \draw (2.195, 0.4) -- (2.545, 0.4);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle NOT-Gatter.\cite{digbau}}
+        \begin{tabular}{c c}
+          \toprule
+          $E$ & $A$\\
+          \midrule
+          0 & 1 \\
+          1 & 0 \\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+
+ \subsubsection{OR-Gatter}
+    Das OR-Gatter vergleicht mehrere Eingangssignale miteinander.
+    Ist mindestens ein Eingangssignal eine „1“ wird auch das Ausgangssignal eine „1“.
+    Nur wenn alle Eingangssignale „0“ sind, wird auch eine „0“ ausgegeben.
+     Das OR-Gatter wird wie in der unteren Abbildung in Schaltplänen dargestellt.
+         \begin{figure}[H]
+       \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{OR-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european or port] at (2, 0.4){};
+	        \node[notcirc] at (2.62, 0.4){};
+	        \node[notcirc] at (-0.15, 0.63){};
+          \node[notcirc] at (-0.15, 0.17){};
+          \node at (-0.6,0.63){$E_1$};
+          \node at (-0.6, 0.17){$E_2$};
+          \node at (3, 0.45){$A$};
+          \draw (-0.075, 0.63) -- (0.25, 0.63);
+           \draw (-0.075, 0.17) -- (0.25, 0.17);
+	        \draw (2.195, 0.4) -- (2.545, 0.4);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle OR-Gatter.\cite{digbau}}
+        \begin{tabular}{c c c}
+          \toprule
+          $E_1$ & $E_2$ & $A$\\
+          \midrule
+          0 & 0 & 1\\
+          0 & 1  & 0\\
+          1 & 0  & 0\\
+          1 & 1 & 0 \\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+  \subsubsection{AND-Gatter}
+    Das AND-Gatter vergleicht mehrere Eingangssignale miteinander 
+    und gibt dementsprechend eine „1“ oder eine „0“ aus. 
+    Nur wenn alle Eingangssignale eine „1“ sind gibt das Gatter das Ausgangssignal „1“.
+    Wenn mindestens ein Eingangssignal „0“ ist, wird stattdessen das Signal „0“ ausgegeben.
+    Die Darstellung innerhalb eines Schaltplans ist in einer Darstellung unten gezeigt.
+      \begin{figure}[H]
+       \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{AND-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european and port] at (2, 0.4){};
+	        \node[notcirc] at (2.62, 0.4){};
+	        \node[notcirc] at (-0.15, 0.63){};
+          \node[notcirc] at (-0.15, 0.17){};
+          \node at (-0.6,0.63){$E_1$};
+          \node at (-0.6, 0.17){$E_2$};
+          \node at (3, 0.45){$A$};
+          \draw (-0.075, 0.63) -- (0.25, 0.63);
+           \draw (-0.075, 0.17) -- (0.25, 0.17);
+	        \draw (2.195, 0.4) -- (2.545, 0.4);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle AND-Gatter.\cite{digbau}}
+        \begin{tabular}{c c c}
+          \toprule
+          $E_1$ & $E_2$ & $A$\\
+          \midrule
+          0 & 0 & 0\\
+          0 & 1  & 0\\
+          1 & 0  & 0\\
+          1 & 1 & 1 \\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+  \subsubsection{NAND-Gatter}
+    Das NAND-Gatter kombiniert die Wirkungsweise eines NOT-Gatters mit einem AND-Gatter. 
+    Sind alle Eingangssignale „1“ wird das Ausgangssignal eine „0“. Ist dies nicht der Fall,
+     wird eine „1“ ausgegeben.
+    Die Darstellung dieses Gatters ist auch in Schaltplänen eine Kombination eines AND- und NOT-Gatters, wie es sich aus der unten stehenden Abbildung entnehmen lässt.
+              \begin{figure}[H]
+       \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{Or-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european nand port] at (2, 0.4){};
+	        \node[notcirc] at (2.62, 0.4){};
+	        \node[notcirc] at (-0.15, 0.63){};
+          \node[notcirc] at (-0.15, 0.17){};
+          \node at (-0.6,0.63){$E_1$};
+          \node at (-0.6, 0.17){$E_2$};
+          \node at (3, 0.45){$A$};
+          \draw (-0.075, 0.63) -- (0.25, 0.63);
+           \draw (-0.075, 0.17) -- (0.25, 0.17);
+	        \draw (2.195, 0.4) -- (2.545, 0.4);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle OR-Gatter.\cite{digbau}}
+        \begin{tabular}{c c c}
+          \toprule
+          $E_1$ & $E_2$ & $A$\\
+          \midrule
+          0 & 0 & 0\\
+          0 & 1  & 1\\
+          1 & 0  & 1\\
+          1 & 1 & 1 \\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+\subsection{Anwendungen}
+  \subsubsection{NAND-Gatter-Komplexe}
+    Durch Verknüpfung von mehreren NAND-Gattern lassen sich andere Arten von Gattern bauen. 
+    Wird an die Eingänge eines NAND-Gatters das selbe Signal gesendet, 
+    wirkt das NAND-Gatter wie ein NOT-Gatter.Wie diese Anwendung eines NAND-Gatters zu schalten ist und logisch funktioniert, ist in der unteren Abbildung dargestellt und über Boolsche Algebra gezeigt.
+       \begin{figure}[H]
+       \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{NOT-Gatter aus NAND-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european nand port] at (2, 0.4){};
+	        \node[notcirc] at (2.62, 0.4){};
+	        \node[notcirc] at (-0.15, 0.4){};
+          \node at (-0.6,0.4){$A$};
+          \node at (3, 0.45){$\overline{A}$};
+          \draw (-0.075, 0.4) -- (0.23, 0.4);
+	        \draw (0.23, 0.635) -- (0.23, 0.175);
+	        \draw (2.195, 0.4) -- (2.545, 0.4);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Boolsche Algebra.}
+        \begin{equation}
+          \overline{A} = \overline{A \wedge B}
+        \end{equation}
+      \end{subfigure}
+    \end{figure}
+    \noindent
+    Schließt man ein NAND-Gatter, als NOT-Gatter, 
+    an ein anderes NAND-Gatter wird das erstere negiert und wirkt somit wie ein AND-Gatter. 
+    Die verwendete Kombination an Gattern wird im folgenden Schaltbild abgebildet und die Logik erneut über Boolsche Algebra erklärt.
+    \begin{figure}
+      \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{UND-Gatter aus NAND-Gatter.\cite{tikz}}
+        \vspace{15pt}
+        \begin{tikzpicture}[transform shape]
+	        \node[european nand port] at (2, 0.75){};
+	        \node[european nand port] at (4.304, 0.75){};
+	        \node[notcirc] at (0.15, 0.977){};
+	        \node[notcirc] at (0.15, 0.522){};
+	        \node[notcirc] at (5, 0.75){};
+          \node at (-0.3,0.977){$A$};
+          \node at (-0.3,0.522){$B$};
+          \node at (5, 1.15){$A \wedge B$};
+	        \draw (2.196, 0.75) -| (2.54, 0.522);
+	        \draw (2.54, 0.75) -- (2.54, 0.977);
+	        \draw (4.5, 0.75) -- (4.914, 0.75);
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Boolsche Algebra.}
+        \begin{equation}
+          A \wedge B = \overline{ (\overline{(A \wedge B)}) }
+        \end{equation}
+      \end{subfigure}
+    \end{figure}
+
+    %Verbindet man zwei, wie NICHT-Gatter wirkende,
+    %NAND-Gatter an ein drittes NAND-Gatter, wirken diese wie ein OR-Gatter.
+    %\begin{figure}[H]
+    %  \begin{subfigure}[t]{0.48\textwidth}%
+    %    \centering
+    %    \caption{OR-Gatter aus NAND-Gatter\cite{tikz}}
+    %    \vspace{5pt}
+    %    \begin{tikzpicture}[transform shape]
+	        %\node[european nand port] at (2, 0.4){};
+	        %\node[european nand port] at (4.3, 1){};
+          %\node[european nand port] at (2,1.6){};
+	        %\node[notcirc] at (-0.15, 1.6){};
+	        %\node[notcirc] at (-0.15, 0.4){};
+	        %\node[notcirc] at (5, 1){};
+          %\node at (-0.6,1.6){$A$};
+          %\node at (-0.6,0.4){$B$};
+          %\node at (5, 1.35){$A \vee B$};
+	        %\draw (-0.075, 1.6) -- (0.23, 1.6);
+	        %\draw (0.23, 1.835) -- (0.23, 1.365);
+          %\draw (-0.075, 0.4) -- (0.23, 0.4);
+	        %\draw (0.23, 0.635) -- (0.23, 0.175);
+	        %\draw (2.195, 0.4) -- (2.545, 0.4);
+	        %\draw (2.545, 0.4) -- (2.545, 0.765);
+          %\draw (2.195, 1.6) -- (2.545, 1.6);
+	        %\draw (2.545, 1.6) -- (2.545, 1.235);
+	        %\draw (4.5, 1) -- (4.915, 1);
+        %\end{tikzpicture}
+      %\end{subfigure}
+      %\hfill
+      %\begin{subfigure}[t]{0.48\textwidth}
+       % \centering
+        %\vspace{0pt}
+        %\caption{Boolsche Algebra}
+        %\begin{equation}
+        %  A \vee B = \overline{(\overline{A} \wedge \overline{B})}
+        %\end{equation}
+      %\end{subfigure}
+    %\end{figure}
+
+
+    %Auch lässt sich aus drei NAND-Gattern mit zwei Eingängen eine Schaltung die wie ein NAND-Gatter mit drei Eingängen wirkt bauen. 
+    %Dafür schaltet man zwei NAND-Gatter, die wie ein AND-Gatter wirken, an ein drittes NAND-Gatter, 
+    %welches an einen dritten Eingang angeschlossen ist.
+
+    %\begin{figure}
+    %  \begin{subfigure}[t]{0.48\textwidth}%
+    %    \centering
+    %    \caption{3-NAND aus NAND-Gatter\cite{tikz}}
+    %    \vspace{5pt}
+    %    \begin{tikzpicture}[transform shape]
+	        % Paths, nodes and wires:
+	        %\node[european nand port] at (7, 0.627){};
+	        %\node[european nand port] at (2, 2.2){};
+          %\node[european nand port] at (4.5,2.2){};
+	        %\node[notcirc] at (0.15, 2.427){};
+	        %\node[notcirc] at (0.15, 0.4){};
+          %\node[notcirc] at (0.15, 1.973){};
+	        %\node[notcirc] at (8, 0.627){};
+          %\node at (-0.3,1.93){$B$};
+          %\node at (-0.3,0.4){$C$};
+          %\node at (-0.3, 2.47){$A$};
+          %\node at (8, 1){$\overline{A \wedge B \wedge C}$};
+          %\draw (7, 0.627) -- (7.9, 0.627);
+	        %\draw (0.25 , 0.4) -- (5.5, 0.4);
+          %\draw (2, 2.2) -- (2.75, 2.2);
+	        %\draw (2.74, 1.973) -- (2.74, 2.427);
+	        %\draw (4.69, 2.2) -- (4.69, 0.854);
+	        %\draw (4.69, 0.854) -- (5.5, 0.854);
+        %\end{tikzpicture}
+      %\end{subfigure}
+      %\hfill
+      %\begin{subfigure}[t]{0.48\textwidth}
+        %\centering
+        %\vspace{0pt}
+        %\caption{Boolsche Algebra}
+        %\begin{equation}
+          %\overline{A \wedge B \wedge C} = \overline{\overline{\overline{(A \wedge B)}}\wedge C}
+        %\end{equation}
+      %\end{subfigure}
+    %\end{figure}
+  \subsubsection{RS-Flip-Flop}
+     Ein RS-Flip-Flop ist eine Schaltung, die auf Zustandsänderungen bei dem Eingang reagiert,
+     also eine zeitabhängige Schaltung. 
+     Sie kann aus vier NAND-Gattern gebaut werden 
+     (Mindestens zwei sind für die Logik eines Flip-Flops nötig). 
+     Die Schaltung hat zwei Eingänge, die als „S“ bzw. „R“ für „Setzen“ bzw. „Rücksetzen“ bezeichnet werden. 
+     Weiterhin hat sie zwei gegensätzliche Ausgänge „Q“ und „$\overline{Q}$“. Das Schaltbild dieses Flip-Flops ist in der unten stehenden Abbildung zu erkennen.
+
+     \noindent
+     Das Schaltbild dieses Flip-Flops ist in der unten stehenden Abbildung zu erkennen.
+     Wenn „Q“ auf „1“ gesetzt ist, ist „$\overline{Q}$“ auf „0“ gesetzt und umgekehrt. 
+     Das wechseln dieser Zustände wird durch das setzen einer „1“ auf dem „S“ bzw. „R“ Eingang. 
+     Bei einer „1“ bei dem Eingang „S“ und Ausgang „$\overline{Q}$“ wird letzterer auf „0“ und „Q“ auf „1“ gesetzt. 
+     Bei einer „1“ bei dem Eingang „R“ und Ausgang „Q“ wird dieser auf „0“ und „$\overline{Q}$“ auf „1“ gesetzt. 
+     Ohne neues Signal (0-0) wird das vorherige Signal erhalten. 
+     Werden beide Eingänge gleichzeitig auf „1“ gesetzt, kommt es zu undefiniertem Verhalten. 
+     Es ist unvorhersehbar durch beispielsweise variierende Halbleiterstrukturen der Gatter. 
+     Die Aus- und Eingabe von Daten ist durch Taktsignale steuerbar.
+    Das Verhalten dieses Flip-Flops bei unterschiedlichen Signalen wird in der folgenden Wahrheitstabelle verdeutlicht..\cite{digbau}
+    \begin{figure}[H]
+      \begin{subfigure}[t]{0.48\textwidth}%
+        \centering
+        \caption{RS-Flip-Flop.\cite{tikz}}
+        \vspace{0pt}
+        \begin{tikzpicture}[transform shape, scale = 1]
+    	    \node[european nand port] at (2.5, 5){};
+    	    \node[european nand port] at (5.264, 4.978){};
+	        \node[european nand port] at (5.264, 2.727){};
+	        \draw (0.486, 4.977) -- (-0.014, 4.977) -- (0.486, 4.977) -| (0.736, 5.227);
+	        \draw (0.736, 4.977) -- (0.736, 4.772);
+	        \node[jump crossing] at (3.5, 4){};
+	        \node[shape=rectangle, minimum width=-0.035cm, minimum height=-0.035cm] at (0, -0){};
+          \draw (5.46, 2.727) -- (5.46, 3.5);
+	        \draw (3.5, 4.75) -| (3.5, 4.14);
+	        \draw (5.46, 3.5) |- (3.5, 3.5) -| (3.5, 3.86);
+	        \draw (3.5, 2.955) -| (2.75, 3) -| (2.75, 4) -- (3.36, 4);
+	        \draw (3.64, 4) -| (5.46, 4.978);
+	        \draw (5.46, 4.978) -| (7, 5);
+	        \draw (5.46, 2.727) -- (7, 2.727);
+	        \node[ocirc] at (7, 4.978){};
+	        \node[ocirc] at (7, 2.727){};
+	        \node[ocirc] at (-0.014, 4.978){};
+	        \draw (2.696, 5) -| (3.5, 5.205);
+	        \draw (3.5, 2.5) -- (2.75, 2.5);
+	        \node[european nand port] at (2.554, 2.5){};
+	        \draw (0.54, 2.477) -- (0.04, 2.477) -- (0.54, 2.477) -| (0.79, 2.727);
+	        \draw (0.79, 2.477) -- (0.79, 2.272);
+	        \node[ocirc] at (0.04, 2.477){};
+          \node at (0,2.8) {R};
+          \node at (0,5.3) {S};
+          \node at (7,5.3) {Q};
+          \node at (7,3.2) {$\overline{Q}$};
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle vom Flip-Flop.\cite{digbau}}
+        \begin{tabular}{c c c c c}
+          \toprule
+          $S$ & $R$ & $Q$ & $\overline{Q}$ & Bedeutung\\
+          \midrule
+          1 & 0 & 1 & 0 & Setzen\\
+          0 & 1 & 0 & 1 & Rücksetzen\\
+          0 & 0 & 1 & 0 & Speichern\\
+          1 & 1 & 1 & 1 & Undefiniert\\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+
+  \subsubsection{D-Flip-Flop}
+    Ein D-Flip-Flop ist ein taktgesteuerter RS-Flip-Flop mit einem zusätzlichem NOT-Gatter. 
+    Dieses verhindert durch setzen von „S“ = „$\overline{R}$“ undefiniertes Verhalten.
+    Wie das Schaltbild eines D-Flip-Flops aussieht und wie es sich logisch verhält, lässt sich aus der unteren Abbildung und der Wahrheitstabelle ziehen.
+    \begin{figure}[H]
+      \begin{subfigure}[t]{0.56\textwidth}%
+        \centering
+        \caption{D-Flip-Flop.\cite{tikz}}
+        \vspace{0pt}
+        \begin{tikzpicture}[transform shape, scale = 1]
+    	    \node[european nand port] at (2.554, 5){};
+    	    \node[european nand port] at (5.264, 4.978){};
+	        \node[european nand port] at (5.264, 2.727){};
+	        \node[jump crossing] at (3.5, 4){};
+	        \node[shape=rectangle, minimum width=-0.035cm, minimum height=-0.035cm] at (0, -0){};
+          \draw (5.46, 2.727) -- (5.46, 3.5);
+	        \draw (3.5, 4.75) -| (3.5, 4.14);
+	        \draw (5.46, 3.5) |- (3.5, 3.5) -| (3.5, 3.86);
+	        \draw (3.5, 2.955) -| (2.75, 3) -| (2.75, 4) -- (3.36, 4);
+	        \draw (3.64, 4) -| (5.46, 4.978);
+	        \node[ocirc] at (-1.8, 5.227){};
+	        \draw (2.696, 5) -| (3.5, 5.205);
+          \node [jump crossing] at (-0.96, 3.75){};
+	        \draw (3.5, 2.5) -- (2.75, 2.5);
+	        \node[european nand port] at (2.554, 2.5){};
+          \node[european not port] at (0.8, 2.272){};
+	        \draw (-1.735, 5.227) -- (0.85, 5.227);
+          \draw (-0.96,5.227) -- (-0.96,2.272);
+          \draw (-1.735, 3.75) -- (-1.03, 3.75);
+          \draw (0.79, 2.73) -- (0.79, 4.773);
+          \draw (-0.91, 3.75) -- (0.79, 3.75);
+	        \node[ocirc] at (-1.8, 3.75){};
+          \node at (-1.8,4) {C};
+          \node at (-1.8,5.477) {D};
+          \node [ocirc] at (6, 2.727){};
+          \node [ocirc] at (6, 4.978) {};
+          \draw (5.46, 2.727) -- (5.95, 2.727);
+          \draw (5.46, 4.978) -- (5.95, 4.978);
+          \node at (6,5.3) {Q};
+          \node at (6,3.2) {$\overline{Q}$};
+        \end{tikzpicture}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \vspace{0pt}
+        \caption{Wahrheitstabelle vom D-Flip-Flop.\cite{digbau}}
+        \begin{tabular}{c c c c c}
+          \toprule
+          $C$ & $D$ & $Q$ & $\overline{Q}$ & Bedeutung\\
+          \midrule
+          1 & 1 & 1 & 0 & Setzen\\
+          1 & 0 & 0 & 1 & Rücksetzen\\
+          0 & 1 & 1 & 0 & Speichern\\
+          0 & 0 & 1 & 0 & Speichern\\
+          \bottomrule
+        \end{tabular}
+      \end{subfigure}
+    \end{figure}
+    \noindent
+    Bei dem Anlegen einer periodischen Rechteckspannung am Eingang „C“ wird die Ausgangsfrequenz zu der halben Eingangsfrequenz. 
+    Der Flip-Flop wirkt als Frequenzteiler.\cite{digbau}
+    Es lassen sich auch mehrere solcher Frequenzteiler hintereinander schalten. Jedes dieser Flip-Flops halbiert die Frequenz, wodurch sich eine maximale Frequenzteilung von $2^n$, bei $n$ Flip-Flops, erreichen lässt. In dem folgenden Impulsdiagramm wird der Unterschied der Frequenz vor und nach Erreichen des Flip-Flops verdeutlicht.
+    %Plot Frequenz teiler
+    \begin{figure}
+\centering
+\includegraphics[width=\textwidth]{frequenzteiler.pdf}
+\caption{Frequnezteiler\cite{digbau,matplotlib}}
+\end{figure}
+    
+    \begin{comment}
+    \subsection{Weitere Bauteile}
+  \subsubsection{Binärzähler}
+    Ein Binärzähler besteht aus mehreren D-Flip-Flops, 
+    die als Frequenzteiler nacheinandergeschaltet werden. 
+    Diese werden mit $2^n$ nummeriert. Mit Jumpern lässt sich die gewollte Frequenzteilung bestimmen. 
+    So lassen sich Binärzahlen zählen. Ein High-Pegel an dem Reset Eingang führt zum Zurücksetzen des Zählers. 
+    Durch zusätzliche Gatter kann der Zähler direkt beim erreichen bestimmter Zahlen zurückgesetzt werden.\cite{digbau}
+  \subsubsection{Quarzoszillator}
+    Ein Quarzoszillator erzeugt eine Frequenz, die mit Frequenzteilern auf die gewollte Frequenz heruntergebrochen wird.\cite{digbau}
+  \subsubsection{Dekadenzähler}
+    Ein Dekadenzähler ist ein Zähler mit einem Takteingang und mehreren Ausgängen, die mit LEDs verbunden sind. 
+    Es wird nur einer der Ausgänge gesetzt.\cite{digbau} 
+    Durch das Verbinden eines Ausgangs mit dem Reset Eingang werden nur die LEDs bis zu diesem Ausgang verwendet. 
+    Ein High-Pegel verbunden mit dem Reset Eingang führt auch hier zum Zurücksetzen des Zählers.\cite{digbau}
+  \subsubsection{7-Segment-Anzeige}
+    Eine 7-Segment-Anzeige setzt Binärzahlen über 7-Segmentcode um und
+    zeigt sie als Dezimalzahl durch Aufleuchten der jeweiligen Segmente an.\cite{digbau}
+  \subsubsection{Piezo}
+    Ein Piezo erzeugt Signaltöne in einem breiten Frequenz- und Lautstärkebereich. \cite{digbau}
+\end{comment}
+
+\printbibliography{}
+
+%\input{content/minted.tex}
+
+
+\end{document}

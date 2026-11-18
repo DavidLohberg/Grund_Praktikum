@@ -1,0 +1,107 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{matplotlib}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a2f53dcc6bb05a06b8ad94176f80fe26}{%
+           family={Hunter},
+           familyi={H\bibinitperiod},
+           given={John\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{fullhash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{fullhashraw}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{bibnamehash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{authorbibnamehash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{authornamehash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{authorfullhash}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \strng{authorfullhashraw}{a2f53dcc6bb05a06b8ad94176f80fe26}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{Current version 3.7.2, \textsc{doi}: \href{https://zenodo.org/records/13308876}{\texttt{10.5281/zenodo.13308876}}}
+      \field{journaltitle}{Computing in Science \& Engineering}
+      \field{number}{3}
+      \field{title}{{Matplotlib}: A {2D} Graphics Environment}
+      \field{version}{1.4.3}
+      \field{volume}{9}
+      \field{year}{2007}
+      \field{pages}{90\bibrangedash 95}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/MCSE.2007.55
+      \endverb
+      \verb{urlraw}
+      \verb http://matplotlib.org/
+      \endverb
+      \verb{url}
+      \verb http://matplotlib.org/
+      \endverb
+    \endentry
+    \entry{tikz}{software}{}{}
+      \name{author}{1}{}{%
+        {{hash=129e88d9b4e0ba07ca911d6e9aebfaca}{%
+           family={Tantau},
+           familyi={T\bibinitperiod},
+           given={Till},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{fullhash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{fullhashraw}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{bibnamehash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{authorbibnamehash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{authornamehash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{authorfullhash}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \strng{authorfullhashraw}{129e88d9b4e0ba07ca911d6e9aebfaca}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{PGF/TikZ}
+      \field{version}{3.1.11}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://github.com/pgf-tikz/pgf
+      \endverb
+      \verb{url}
+      \verb https://github.com/pgf-tikz/pgf
+      \endverb
+    \endentry
+    \entry{digbau}{manual}{}{}
+      \list{organization}{1}{%
+        {TU Dortmund, Fakultät Physik}%
+      }
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{V350 Digitale Bauelemente}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,5 @@
+[1] Config.pm:329> INFO - This is Biber 2.22
+[2] Config.pm:332> INFO - Logfile is 'v350.tex.blg'
+[157] biber:342> INFO - === Thu Oct 29, 2026, 22:41:28
+[744] Utils.pm:480> ERROR - Cannot find 'v350.tex.bcf'!
+[744] Biber.pm:137> INFO - ERRORS: 1
