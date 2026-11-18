@@ -1,0 +1,15 @@
+[0] Config.pm:329> INFO - This is Biber 2.22
+[0] Config.pm:332> INFO - Logfile is 'v300.blg'
+[76] biber:342> INFO - === Fri Nov  6, 2026, 13:04:53
+[92] Biber.pm:421> INFO - Reading 'v300.bcf'
+[153] Biber.pm:1002> INFO - Found 2 citekeys in bib section 0
+[166] Biber.pm:4487> INFO - Processing section 0
+[175] Biber.pm:4680> INFO - Looking for bibtex file 'lit.bib' for section 0
+[176] bibtex.pm:1713> INFO - LaTeX decoding ...
+[179] bibtex.pm:1519> INFO - Found BibTeX data source 'lit.bib'
+[215] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[215] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[215] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'de-DE'
+[215] Biber.pm:4313> INFO - No sort tailoring available for locale 'de-DE'
+[223] bbl.pm:676> INFO - Writing 'v300.bbl' with encoding 'UTF-8'
+[225] bbl.pm:779> INFO - Output to v300.bbl

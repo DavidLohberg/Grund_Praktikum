@@ -1,0 +1,257 @@
+\input{header.tex}
+\input{commands.tex}
+
+\subject{VERSUCH 100}
+\title{Volumebestimmung von unregelmäßigen Körpern}
+\date{%
+  Durchführung: 27.10.2026
+  \hspace{3em}
+  Abgabe: 03.11.2026
+}
+\usepackage{subcaption}
+\usepackage[section, below]{placeins}
+\usepackage[]{caption} % Captions schöner machen
+\usepackage{comment}
+\FloatBarrier
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+\section{Auswertung}
+Für die Auswertung der Messergebnisse der beiden verwendeten Methoden zur Volumenbestimmung des unregelmäßigen Körpers werden unterschiedliche Formeln und Fehlerrechnungen verwendet.
+\subsection{Volumenbestimmung per Messung}
+Die bei der direkten Messung erhobenen Werte werden im Zusammenhang von verschiedenen Volumenformeln verwendet,
+ um am Ende das Gesamtvolumen zu errechnen. 
+ Da sich der Körper in einen Quader und einen Zylinder aufteilen lässt, 
+ deren Volumina jeweils durch Zylinder- und Kegelstumpfförmige Löcher reduziert werden,
+  werden ausschließlich die wie folgt lautenden Volumenformeln benötigt. 
+  \begin{gather}
+    V_{Quader} = a \cdot b \cdot c \\
+    V_{Zylinder} = \symup{\pi} \cdot r^{2} \cdot h\\
+    V_{Kegelstumpf} = \frac{\symup{\pi}}{3} \cdot (R^2+R\cdot r +r^2)\cdot h
+  \end{gather}
+  \subsection{Erhobene Messwerte}
+  Für die Höhe B3 wurde aufgrund von Schwierigkeiten beim Messen eine zehn Wiederholungen lange Messreihe gestartet und in der folgenden Tabelle festgehalten.
+      \begin{table}[H]
+      \centering
+      \caption{Messungsreihe $B_{3}$}
+      \begin{tblr}{colspec={c c c c c c c c c c c}}
+        \toprule
+        $Messsung$ & 1 & 2 & 3 & 4 & 5& 6 &7 & 8 & 9 & 10\\
+          \midrule
+        $B3[\unit{\mm}]$ & 0.50 & 0.30 & 0.35 & 0.40 & 0.40 & 0.20 & 0.15 & 0.10 & 0.40 & 0.20\\
+        \bottomrule
+      \end{tblr}
+    \end{table}
+    Aus diesen erhobenen Werten wurde der Mittelwert wie folgt gebildet:
+        \begin{gather}
+        \overline{B3}=\frac{1}{10} \cdot \sum_{i=1}^{10} B3_{i}= 0.3\unit{\mm}
+    \end{gather}
+    Zunächst wird die Standardabweichung der Messreihe berechnet, um darauf hin die Unsicherheit des Mittelwertes zu berechnen.
+    \begin{gather}
+      \sigma_{B3} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N} (B3_{i}-\overline{B3})^{2}} \approx 0.13\unit{\mm}\\
+      \sigma_{\overline{B3}}  = \frac{\sigma_{B3}}{\sqrt{N}} \approx 0.04\unit{\mm}
+    \end{gather}
+    Da der Messschieber eine aber noch eine Unsicherheit von $\pm 0,05\unit{\mm}$ hat wird diese Unsicherheit noch qudratisch mit der Unsicherheit des Mittelwertes addiert.
+    \begin{gather}
+      u_{B3} = \sqrt{(\sigma_{\overline{B3}})^2 + (0,05\unit{\mm})^2} \approx 0.06\unit{\mm}\\
+    \end{gather}
+    Die restlichen mit dem Messschieber abgelesenen Messwerte für die unterschiedlichen Längen und Durchmesser sind mit dem vom Messgerät festgelegten Fehler von ± 0,05mm behaftet. Alle errechneten beziehungsweise abgelesenen Werte sind in der untenstehenden Tabelle mit ihrer jeweiligen Unsicherheit dargestellt.
+    \begin{table}[H]
+      \centering
+      \caption{Messdaten}
+
+      \begin{tblr}{colspec={c r r r},cell{1}{2} = {c},cell{1}{3} = {c}, cell{1}{4} = {c}}
+        \toprule
+        $N$ & $A$ & $B$ & $D$ \\
+        \midrule
+        1 &47,50 $\pm$ 0,05\unit{\mm} & 9,00 $\pm$ 0,05\unit{\mm} & 32,85 $\pm$ 0,05\unit{\mm}\\
+        2 & 3,45 $\pm$ 0,05\unit{\mm} & 6,90 $\pm$ 0,05\unit{\mm} &13,1 $\pm$ 0,05\unit{\mm}  \\
+        3 & 1,05 $\pm$ 0,05\unit{\mm} & 0,30 $\pm$ 0,06\unit{\mm} & 8,30 $\pm$ 0,05\unit{\mm}\\
+        4 & 7,00 $\pm$ 0,05\unit{\mm} & 3,00 $\pm$ 0,05\unit{\mm} & 2,95 $\pm$ 0,05\unit{\mm}  \\
+        5 & 2,65 $\pm$ 0,05\unit{\mm} & 10,05 $\pm$ 0,05\unit{\mm} & 0,25 $\pm$ 0,05\unit{\mm}\\
+        6 & 1,60 $\pm$ 0,05\unit{\mm} & 11,30 $\pm$ 0,05\unit{\mm} & \\
+        7 & 4,40 $\pm$ 0,05 \unit{\mm} & 7,40 $\pm$ 0,05\unit{\mm} & \\
+        8 & 10,15$\pm$ 0,05\unit{\mm} &  5,95 $\pm$   0,05\unit{\mm} & \\
+       	9 & 48,20 $\pm$   0,05\unit{\mm} & &   \\
+        \bottomrule
+      \end{tblr}
+    \end{table}
+    \subsection{Volumenberechnung und Fehlerfortpflanzung}
+    Die Messdaten aus der obigen Tabelle werden nun für die einzelnen Körper und Löcher in die jeweiligen Volumenformeln eingesetzt. Es sind zehn Zylinder, drei Quader und ein Kegelstumpf zu berechnen. Für die Bestimmung der Fehler dieser berechneten Volumina wird die Gaußsche Fehlerfortpflanzung gewählt.
+    \begin{gather}
+      u = \sqrt{\sum_{i=1}^{N} \Bigl(\frac{\partial f}{\partial x_{i}}\cdot u_i\Bigr)^2}
+    \end{gather}
+    Diese gesamte Rechnung ist hier beispielhaft für den Zylinder 1 beschrieben:
+    \begin{gather}
+      Z_{1} = \symup{\pi} \cdot \Bigl(\frac{A_2}{2}\Bigr)^2 \cdot (B_5-B_2)
+    \end{gather}
+    Zunächst wird das Volumen des Zylinders mit der Formel (8) berechnet:
+    \begin{gather}
+      Z_{1} = 29,45 \pm u_{fehler,Z1}\unit{\mm^3}
+    \end{gather}
+    Um die tatsächliche Unsicherheit $u_{fehler,Z1}$ zu bestimmen muss vorher der Fehler der zusammengesetzten Höhe B5-B2, $u_h$ berechnet werden
+    \begin{gather}
+      u_{h} = \sqrt{((1)u_{b5})^2+((1)u_{b2})^2}\\
+            u_{h} \approx  0,071 \unit{\mm}
+    \end{gather}
+    Nun wird die Formel der Gaußschen Fehlerfortpflanzung angewandt um $u_{fehler,Z1}$ zu berechnen: 
+    \begin{gather}
+      u_{fehler,Z1} = \sqrt{(\frac{\symup{\pi}}{2}(B_5-B_2)A2 \cdot u_{A_2})^2 + (\frac{\symup{\pi}}{4}(A_2)^2 \cdot u_{h})^2}
+    \end{gather}
+    Eingesetzt ergibt dies:
+    \begin{gather}
+      u_{fehler} \approx 1,08\unit{\mm^3}\\
+      Z_{1} = 29,45 \pm 1,08\unit{\mm^3}
+    \end{gather}
+    Dieser Vorgang wird für alle zu berechnenden Volumen wiederholt
+    \subsection{Gesamtvolumenberechnung}
+    Zuletzt wird das Gesamtvolumen berechnet indem die Summen der Volumen der Löcher von $V_{Quader}$ und $V_{Zylinder}$ abgezogen werden.
+    Dabei gibt es neun zylinderförmige Löcher$V_{Z, i}$ und vier quaderförmige Löcher $V_{R, i}$, die aber auf 2 mal die selben Volumen haben, daher wird die Summe der Quaderlöcher mit 2 multipliziert. Außerdem wird das Volumen des Kegelstumpfes $V_k$ abgezogen:
+    \begin{gather}
+      V_{ges} = V_{Zyl} + V_{Quad} - \sum_{i=1}^{9} V_{Z, i} - 2 \sum_{i=1}^{2} V_{R, i}-V_k
+    \end{gather}
+    Auch hier wird wieder die Gaußsche Fehlerfortpflanzung angewandt. \\
+\noindent
+Die eingesetzten Formeln der einzelnen Volumina, ihre Ergebnisse und Fehler sind in der unteren Tabelle aufgeführt.
+
+\begin{longtblr}[
+    caption = {Volumen Körper},
+    label = {tab:volumen-koerper}
+]{
+    colspec = {c l r},
+    colsep = 5pt,
+    row{1} = {font=\bfseries},
+    cell{1}{1} = {c},
+    cell{1}{2} = {c},
+    cell{1}{3} = {c},
+    hline{1,2,Z} = {1pt},
+}
+    $Z_i$ & Formeln & $V_{Z,i}$ \\
+    1 & $V_{Z,1} = \symup{\pi}\left(\frac{A_2}{2}\right)^2(B_5-B_2)$
+      & $29{,}45 \pm 1{,}08\,[\unit{mm^3}]$ \\
+    2 & $V_{Z,2} = \symup{\pi}\left(\frac{D_3}{2}\right)^2 B_2$
+      & $373{,}33 \pm 5{,}25\,[\unit{mm^3}]$ \\
+    3 & $V_{Z,3} = \symup{\pi}\left(\frac{A_3}{2}\right)^2 B_5$
+      & $8{,}70 \pm 0{,}83\,[\unit{mm^3}]$ \\
+    4 & $V_{Z,4} = \symup{\pi}\left(\frac{A_6}{2}\right)^2 B_5$
+      & $20{,}21 \pm 1{,}27\,[\unit{mm^3}]$ \\
+    5 & $V_{Z,5} = \symup{\pi}\left(\frac{A_5}{2}\right)^2(B_5-B_3)$
+      & $53{,}78 \pm 2{,}07\,[\unit{mm^3}]$ \\
+    6 & $V_{Z,6} = \symup{\pi}\left(\frac{D_2}{2}\right)^2 B_1$
+      & $1213{,}04 \pm 11{,}45\,[\unit{mm^3}]$ \\
+    7 & $V_{Z,7} = \symup{\pi}\left(\frac{A_7}{2}\right)^2(B_6-B_1)$
+      & $34{,}97 \pm 1{,}34\,[\unit{mm^3}]$ \\
+    8 & $V_{Z,8} = \symup{\pi}\left(\frac{A_7}{2}\right)^2(B_5-B_4)$
+      & $107{,}20 \pm 2{,}66\,[\unit{mm^3}]$ \\
+    9 & $V_{Z,9} = \symup{\pi}\left(\frac{A_8}{2}\right)^2 B_4$
+      & $242{,}74 \pm 4{,}70\,[\unit{mm^3}]$ \\
+    10 & $V_{Zyl} = \symup{\pi}\left(\frac{C_1}{2}\right)^2 B_6$
+       & $9577{,}21 \pm 51{,}44\,[\unit{mm^3}]$ \\
+    11 & $V_{Quad} = A_1 \cdot A_9 \cdot B_5$
+       & $23009{,}48 \pm 119{,}42\,[\unit{mm^3}]$ \\
+    12 & $V_{Q,2} = (D_1-D_2)\cdot D_5\cdot B_7$
+       & $36{,}54 \pm 7{,}37\,[\unit{mm^3}]$ \\
+    13 & $V_{Q,3} = (D_1-D_2)\cdot D_4\cdot B_8$
+       & $346{,}66 \pm 10{,}99\,[\unit{mm^3}]$ \\
+    14 & $V_K = \frac{\symup{\pi}}{12}
+         B_3(A_4^2 + A_4\cdot A_5 + A_5^2)$
+       & $5{,}86 \pm 1{,}17\,[\unit{mm^3}]$ \\
+       \bottomrule
+    Gesamt & $V_{\mathrm{Gesamt}}$
+       & $30114{,}21 \pm 129{,}98\,[\unit{mm^3}]$ \\
+\end{longtblr}
+
+%\input{content/durchfuehrung.tex}
+%Formel dump
+\begin{comment}
+\begin{gather}
+ \overline{x} = \frac{a}{N} \cdot \sum_{i=1}^{N} x_i\\
+   \sigma_{x} = \sqrt{\frac{1}{N-1}\cdot \sum_{i=1}^{N} (x_{i}-\overline{x})^2} \\
+    \sigma_{\overline{x}}= \frac {\sigma}{\sqrt{N}}\\
+    u = \sqrt{\sum_{i=1}^{N} \Bigl(\frac{\partial f}{\partial x_{i}}\cdot u_i\Bigr)^2}
+    V_{quad} = A1 A9 B5\\
+        V_{zyl} = \symup{\pi} r^2 h= \symup{\pi} B6 \frac{C1}{2}\\
+\end{gather}
+    \begin{gather}
+      V_{Zyl1}= \symup{\pi} \Bigl(\frac{A2}{2}\Bigr)^2 (B5-B2)= 29.45 \pm gaus[mm^3] \\
+      V_{Zyl2}= \symup{\pi} \Bigl(\frac{D3}{2}\Bigr)^2 (B2)= 373.33 \pm gaus[mm^3] \\
+      V_{Zyl3}= \symup{\pi} \Bigl(\frac{A3}{2}\Bigr)^2 (B5)= 8.70 \pm gaus[mm^3] \\
+      V_{Zyl4}= \symup{\pi} \Bigl(\frac{A6}{2}\Bigr)^2 (B5)= 20.21 \pm gaus [mm^3] \\
+      V_{Zyl5}= \symup{\pi} \Bigl(\frac{A5}{2}\Bigr)^2 (B5-B3)= 53.78\pm gaus [mm^3] \\
+      V_{Zyl6}= \symup{\pi} \Bigl(\frac{D2}{2}\Bigr)^2 (B1)= 1213.04 \pm gaus [mm^3] \\
+      V_{Zyl7}= \symup{\pi} \Bigl(\frac{A7}{2}\Bigr)^2 (B6-B1)= 34.97 \pm gaus [mm^3] \\
+      V_{Zyl8}= \symup{\pi} \Bigl(\frac{A7}{2}\Bigr)^2 (B5-B4)= 107.20 \pm gaus [mm^3] \\
+      V_{Zyl9}= \symup{\pi} \Bigl(\frac{A8}{2}\Bigr)^2 (B4)= 242.74 \pm gaus[mm^3] 
+    \end{gather}
+\end{comment}
+\subsection{Volumen mit Überlaufmethode}
+Das im Meßzylinder abgelesene Volumen des verdrängten Wassers entspricht dem Volumen des Körpers.
+
+\noindent
+Die abgelesenen und umgewandelten Volumen der fünf Wiederholungen sind in der folgenden Tabelle dargestellt und mit dem vom Messzylinder festgelegten Fehler von $\pm$0,5 ml behaftet.
+ \begin{table}[H]
+      \centering
+      \caption{Wasserverdrengung Messungen}
+      \sisetup{table-format=1.2}
+      \begin{tblr}{colspec={c r r}}
+        \toprule
+        $Messung$ & $V_{H20}[ml]$ & $V_{\text{Körper}}[cm^3]$\\
+        \midrule
+        1 & 36$\pm$0,5 [ml] & 36$\pm$0,5 [$cm^3$] \\
+        2 & 35$\pm$0,5 [ml] & 35$\pm$0,5 [$cm^3$] \\
+        3 & 33$\pm$0,5 [ml] & 33$\pm$0,5 [$cm^3$]\\
+        4 & 35$\pm$0,5 [ml] & 35$\pm$0,5 [$cm^3$]\\
+        5 & 34,5$\pm$0.5 [ml] & 34,5$\pm$0,5 [$cm^3$]\\
+        6 & 34$\pm$0,5 [ml]& 34$\pm$0,5 [$cm^3$]\\
+        \bottomrule
+      \end{tblr}
+    \end{table}
+    Anschließend werden die Messwerte gemittelt und der Fehler des Ergebnis berechnet.
+    \begin{gather}
+      \overline{V}_{\text{Körper}} =\frac{1}{6} \cdot \sum_{i=1}^{6} V_{i} \approx 34,58 [cm^3]\\
+       \sigma_{\text{körper}} = 0,50 [cm^3]\\
+       \sigma_{\overline{V}} = \frac{\sigma}{\sqrt{N}} \approx 0.20[cm^3]
+    \end{gather}
+    Auch hier wird die Unsicherheit des Messgerätes noch qudratisch mit der Unsicherheit des Mittelwertes addiert.
+    \begin{gather}
+      u_{V_{\text{Körper}}} = \sqrt{(\sigma_{\overline{V}})^2 + (0,5\unit{cm^3})^2} \approx 0,50 [cm^3]\\
+      V_{\text{Körper}} \approx 34,58\pm0,50  [cm^3]
+    \end{gather}
+  \section{Diskussion der Ergebnisse}
+  Zunächst werden die beiden Ergebnisse miteinander verglichen. 
+ Dafür wird das Ergebnis der direkten Messung in $cm^3$ umgerechnet und anschließend die Differenz der beiden Ergebnisse gebildet.
+ \begin{gather}
+  34.58-30.11=4.47 \unit{cm^3}
+ \end{gather}
+ Anschließend wird aus den Fehlern beider Ergebnisse eine kombinierte Unsicherheit gebildet über die quadratische Addition absoluter Messunsicherheiten.
+\begin{gather}
+  \sqrt{0.13^2 + 0.50^2} = 0.51\unit{cm^3}
+\end{gather}
+Nun wird die errechnete Differenz der Ergebnisse mit ihrer kombinierten Unsicherheit verglichen.
+\begin{gather}
+  \frac{4.47}{0.51}= 8.76
+ \end{gather}
+
+\noindent
+Aus diesem Vergleich lässt sich eine Unverträglichkeit der beiden Messergebnisse miteinander ziehen, da sie in einer 9-$\sigma$ Entfernung voneinander sind.
+
+\noindent
+Neben den ausgerechneten, beziehungsweise von den Messinstrumenten vorgegebenen Unsicherheiten, gibt es noch weitere Fehler, die einen Einfluss auf das Versuchsergebnis haben können. 
+
+\noindent
+Eine Fehlerquelle, die bei beiden Methoden eine Rolle spielt, ist der menschliche Fehler. Es kann bei jeder Messung durch die Ungenauigkeit des menschlichen Auges und im Falle der direkten Messung durch Schwierigkeiten beim Ansetzen des Messschiebers zu Abweichungen kommen. Diese groben Fehler werden bei beiden Messungen zu einer Abweichung geführt haben. Hierbei wird der Einfluss spezifisch bei den 
+Volumen $V_{Z,2} V_{Z,6}  V_{Z,8} V_{Z,9} V_{Zyl} V_{Quad}$ und $V_{Q,2}$ und bei der Wasserverdrängung am größten sein. Die restlichen Volumina führen aufgrund ihrer geringen Größe zu kaum einer Veränderung des Gesamtvolumen. 
+
+\noindent
+Ebenfalls wird ein systematischer Fehler bei der Überlaufmethode zu einer Abweichung führen. Sowohl im Messzylinder, als auch im Ablaufrohr kommt es zur Ansammlung von Wasser Rückständen. Darunter Wassertropfen an den Seiten der Gefäße und eine gewisse Menge Wasser am Boden des Messzylinders. Dieser systematische Fehler wird das bestimmte Volumen für jede Messung konsequent erhöhen. 
+
+\noindent
+Diese weiteren Fehlerquellen sind eine potentielle Erklärung für die starke Abweichung der beiden Ergebnisse voneinander. 
+
+%\input{content/auswertung.tex}
+%\input{content/diskussion.tex}
+\end{document}
