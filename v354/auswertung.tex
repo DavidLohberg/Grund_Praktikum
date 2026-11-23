@@ -3,7 +3,7 @@ für die Auswertung verwendet werden:
 \begin{itemize}
     \item Widerstand 1: $R_1 = 48,1 \pm 0,1 \mathrm{ohm}$
     \item Widerstand 2: $R_2 =509,5 \pm 0,5 \mathrm{ohm}$
-    \item Kondensator: $C = 2,089 \pm 0,006 \mathrm{\mu F}$
+    \item Kondensator: $C = 2,089 \pm 0,006 \mathrm{nF}$
     \item Spule: $L = 10,11 \pm 0,03 \mathrm{mH}$
 \end{itemize}
 \subsection{Zeitabhängikeit der Amplitude}
@@ -50,7 +50,7 @@ Die Messwerte und der Fit sind in Abbildung 3 dargestellt.
 Der Fit wurde in der Form $f(x) = a \cdot e^{b \cdot x}$ durchgeführt, wobei $a$ und $b$ die Fitparameter sind.
 Aus dem Fit wurde der Wiederstand R bestimmt(\ref{fig:exp_abfall}). Der Fit ergab einen Wert von $b = -6449.56 \pm 102,52 \mathrm{Hz}$. Daraus ergibt sich ein Widerstand von:
 \begin{equation}
-    R = 2 \cdot L \cdot b \cdot (-1) = 130,39 \mathrm{\Omega}
+    R_{\text{Fit}} = 2 \cdot L \cdot b \cdot (-1) = 130,39 \mathrm{\Omega}
 \end{equation}
 Die Ungenauigkeit des Widerstands wurde über die Fehlerfortpflanzung bestimmt. Die Fehlerfortpflanzung ergibt sich aus der Formel:
 \begin{equation}
@@ -60,10 +60,24 @@ Damit ergibt sich eine folgende Ungenauigkeit des Widerstands:
 \begin{gather}
     \Delta R = 2 \cdot \sqrt{(b \cdot \Delta L)^2 + (L \cdot \Delta b)^2} = 2 \\
     \sqrt{(6449,56 \cdot 0,03)^2 +(10,11 \cdot 102,52)^2} = 2,08 \mathrm{\Omega}\\
-    R = 130,39 \pm 2,08 \mathrm{\Omega}
+    R_{\text{Fit}} = 130,39 \pm 2,08 \mathrm{\Omega}
 \end{gather}
 
 \subsection{Aperiodischer Grenzfall}
+Der Widerstand, der für den Aperiodischen Grenzfall benötigt wird, lässt sich mit folgender Formel bestimmen:
+\begin{equation}
+    R_{\text{Theorie}} = 2 \cdot \sqrt{\frac{L}{C}}
+\end{equation}
+Damit ergibt sich ein Widerstand von:
+\begin{equation}
+    R_{\text{Theorie}} = 2 \cdot \sqrt{\frac{10,11 \cdot 10^{-3}}{2,089 \cdot 10^{-6}}} = 4399,83 \mathrm{\Omega}
+\end{equation}
+Der Aperiodische Grenzfall wurde über ein vestellbaren Widerstand bestimmt, der zwischen 1 und 10000 Ohm einstellbar ist.
+ Der Widerstand wurde zunächst auf seinen Maximalwert eingestellt und dann langsam verringert, bis der Aperiodische Grenzfall eintrat. 
+ Danach wurde der Widerstand auf seinen Minimalwert eingestellt und langsam erhöht, bis der Aperiodische Grenzfall eintrat. 
+Der Aperiodische Grenzfall trat beim ersten Versuch bei einem Widerstand von $R_{\text{exp1}} \approx 3200 \mathrm{\Omega}$ ein.
+Beim Zweiten Versuch trat der Aperiodische Grenzfall bei einem Widerstand von $R_{\text{exp2}} \approx 3160 \mathrm{\Omega}$ ein.
+\subsection{Frequenzabhängigkeit der Kondensatorspannung und Phase}
 
 
 4 Wege Güte zu errechnen
