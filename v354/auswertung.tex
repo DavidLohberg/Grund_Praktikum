@@ -1,10 +1,70 @@
-In den Versuchen hatten die verwendeten Bauteile folgende Werte:
+In den Versuchen hatten die verwendeten Bauteile folgende Werte, welche im folgenden
+für die Auswertung verwendet werden:
 \begin{itemize}
     \item Widerstand 1: $R_1 = 48,1 \pm 0,1 \mathrm{ohm}$
     \item Widerstand 2: $R_2 =509,5 \pm 0,5 \mathrm{ohm}$
     \item Kondensator: $C = 2,089 \pm 0,006 \mathrm{\mu F}$
     \item Spule: $L = 10,11 \pm 0,03 \mathrm{mH}$
 \end{itemize}
+\subsection{Zeitabhängikeit der Amplitude}
+Um die Zeitabhängigkeit der Amplitude zu bestimmen, wurde die Spannung $U$ in Abhängigkeit der Zeit $t$ gemessen. 
+Die Messwerte sind in Tabelle 1 dargestellt. 
+\begin{table}[H]
+    \centering
+    \begin{tblr}{c c c}
+    \toprule
+    $Messung$ & $Spannung$  U in V & Zeit $\delta t$ in $\mu$s \\
+    \midrule
+    $T_0$ & 0.62 & 20 \\
+    $T_1$ & 0.57 & 30 \\
+    $T_2$ & 0.53 & 50 \\
+    $T_3$ & 0.48 & 60 \\
+    $T_4$ & 0.43 & 75 \\
+    $T_5$ & 0.40 & 90 \\
+    $T_6$ & 0.36 & 105 \\
+    $T_7$ & 0.33 & 120 \\
+    $T_8$ & 0.30 & 135 \\
+    $T_9$ & 0.27 & 150 \\
+    $T_{10}$ & 0.25 & 165 \\
+    $T_{11}$ & 0.23 & 180 \\
+    $T_{12}$ & 0.21 & 195 \\
+    $T_{13}$ & 0.20 & 210 \\
+    $T_{14}$ & 0.18 & 225 \\
+    $T_{15}$ & 0.16 & 240 \\
+    \bottomrule 
+    \end{tblr}
+    \caption{Messreihe zur Zeitabhängigkeit der Amplitude}
+\end{table}
+\noindent
+Die Zeit wurde in delta t gemessen, da die Zeit zwischen den einzelnen Peaks der Spannung gemessen wurde.
+Die Spannung wurde über die Peak-to-Peak Methode bestimmt, und dann durch zwei geteilt, um die Amplitude zu erhalten.
+Aus den Messwerten wurde ein Fit der Form $U(t) = U_0 \cdot e^{-\frac{R}{2L}t}$ durchgeführt, um den Widerstand R zu bestimmen.
+Die Messwerte und der Fit sind in Abbildung 3 dargestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{v354/Exp_Abfall.pdf}
+    \caption{Messwerte und Fit der Zeitabhängigkeit der Amplitude}
+    \label{fig:exp_abfall}
+\end{figure}
+\noindent
+Der Fit wurde in der Form $f(x) = a \cdot e^{b \cdot x}$ durchgeführt, wobei $a$ und $b$ die Fitparameter sind.
+Aus dem Fit wurde der Wiederstand R bestimmt(\ref{fig:exp_abfall}). Der Fit ergab einen Wert von $b = -6449.56 \pm 102,52 \mathrm{Hz}$. Daraus ergibt sich ein Widerstand von:
+\begin{equation}
+    R = 2 \cdot L \cdot b \cdot (-1) = 130,39 \mathrm{\Omega}
+\end{equation}
+Die Ungenauigkeit des Widerstands wurde über die Fehlerfortpflanzung bestimmt. Die Fehlerfortpflanzung ergibt sich aus der Formel:
+\begin{equation}
+    \Delta R = \sqrt{(\frac{\partial R}{\partial L} \cdot \Delta L)^2 + (\frac{\partial R}{\partial b} \cdot \Delta b)^2}
+\end{equation}
+Damit ergibt sich eine folgende Ungenauigkeit des Widerstands:
+\begin{gather}
+    \Delta R = 2 \cdot \sqrt{(b \cdot \Delta L)^2 + (L \cdot \Delta b)^2} = 2 \\
+    \sqrt{(6449,56 \cdot 0,03)^2 +(10,11 \cdot 102,52)^2} = 2,08 \mathrm{\Omega}\\
+    R = 130,39 \pm 2,08 \mathrm{\Omega}
+\end{gather}
+
+\subsection{Aperiodischer Grenzfall}
+
 
 4 Wege Güte zu errechnen
 Theoriewert Resonanzbreite aus amp.plot%1/sqrt(2)

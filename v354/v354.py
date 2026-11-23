@@ -45,7 +45,7 @@ plt.ylabel("UC/U0", fontsize=12)
 plt.grid(True)
 plt.legend(loc = 'upper left')
 plt.savefig ('Spannungsamplitude.pdf')
-
+#Spannungsabfall
 mess_Spannungen = np.array([
     1.24, -1.14, 1.06, -0.96, 0.86, -0.80, 0.72, -0.66, 0.6,
     -0.54, 0.46, -0.42, 0.4, -0.36, 0.32
@@ -55,9 +55,10 @@ mess_Zeit = np.array ([
     0, 20, 30, 50, 60, 75, 90, 105, 120, 135,
     150, 165, 180, 195, 210
 ])
+mess_Zeit = mess_Zeit * 1e-6
 norm_Spannung = np.sqrt(mess_Spannung * mess_Spannung)
 (a, b), cov = curve_fit(exp_func, mess_Zeit, norm_Spannung, p0 = (1.2, 0.006))
-t = np.linspace(0, 250, 400)
+t = np.linspace(0, 250e-6, 400)
 fig, ax = plt.subplots()
 plt.scatter(
         mess_Zeit,
@@ -70,11 +71,16 @@ plt.scatter(
     )
 plt.plot(t, exp_func(t, a, b), color = 'blue', label = 'fit')
 plt.plot(t, - exp_func(t, a, b), color = 'blue')
-plt.xlabel("t[µs]", fontsize=12)
+plt.xlabel("t[s]", fontsize=12)
 plt.ylabel("U[V]", fontsize=12)
 plt.grid(True)
 plt.legend()
 plt.savefig ('Exp_Abfall.pdf')
+print(b)
+r = 2*b *L *(-1)
+print(r)
+errors = np.sqrt(np.diag(cov))
+print(errors)
 #arctan2 
 
 T = 1/(mess_frequenz * 1000)
