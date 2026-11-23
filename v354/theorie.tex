@@ -1,9 +1,9 @@
 
 \section{Theorie}
-Wird in eine Schaltung mit zwei Energiespeichern, bestehend aus einer Kapazität C und einer Induktivität L, Energie hineingefühlt, fließt diese immer wieder von Speicher zu Speicher. Der daraus entstehende Schwingkreis kann über verschiedene Wege verändert werden.
+Wird in eine Schaltung mit zwei Energiespeichern, bestehend aus einer Kapazität C und einer Induktivität L, Energie hineingefühlt, fließt diese immer wieder von Speicher zu Speicher. Der daraus entstehende Schwingkreis kann über verschiedene Wege verändert werden.\cite{v354}
 \subsection{Gedämpfte Schwingungen}
 Wird ein ohmscher Widerstand in den Schwingkreis eingebaut, wird elektrische Energie immer wieder in Wärme umgewandelt(\ref{fig:gedaempfter_schwingkreis}). Mit der Zeit nehmen die Amplitude von Strom und Spannung ab. 
-Es wird von einer gedämpften Schwingung gesprochen.
+Es wird von einer gedämpften Schwingung gesprochen.\cite{v354}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Gedaempfter_Schwingkreis.png}
@@ -11,6 +11,68 @@ Es wird von einer gedämpften Schwingung gesprochen.
     \label{fig:gedaempfter_schwingkreis}
 \end{figure}
 \subsection{Erzwungene Schwingungen}
-Wird dem Schwingkreis eine zeitabhängig schwingende Spannung angelegt, schwingt der Schwingkreis mit der Frequenz der Spannung. In Abhängigkeit des Widerstands, der Kapazität und der Induktivität gibt es eine Frequenz, bei der ein Maximum an Energie in den Schwingkreis geführt werden kann. Es kommt zu einem Maximum der Stromamplitude bei dieser Resonanzfrequenz.
+Wird dem Schwingkreis eine zeitabhängig schwingende Spannung angelegt, schwingt der Schwingkreis mit der Frequenz der Spannung. In Abhängigkeit des Widerstands, der Kapazität und der Induktivität gibt es eine Frequenz, bei der ein Maximum an Energie in den Schwingkreis geführt werden kann. Es kommt zu einem Maximum der Stromamplitude bei dieser Resonanzfrequenz.\cite{v354}
 
 \subsection{Formeln}
+Für die letztliche Auswertung der folgenden Messungen werden verschiedene Formeln benötigt.
+Die Berechnung der Fehler geschieht über die Gaußsche Fehlerfortpflanzung.
+\begin{equation}
+    u = \sqrt{\sum_{i=1}^{N} \Bigl(\frac{\partial f}{\partial x_{i}}\cdot u_i\Bigr)^2}
+\end{equation}    
+Um den Widerstand zu berechnen, bei dem der aperiodischer Grenzfall eintritt, wird folgende Formel verwendet\cite{v354}:
+\begin{equation}
+    {\frac{1}{LC}}= {\frac{R_{ap}^2}{4L^2}}
+    \end{equation}
+Umgestellt ergibt sich:
+\begin{equation}
+    R_{ap} = 2 \cdot \sqrt{\frac{L}{C}}
+\end{equation}
+
+Für weitere Formeln wird $\omega$ in Abhängigkeit von der Frequenz f definiert:
+\begin{equation}
+    \omega = 2 \pi f
+\end{equation}
+Um die Resonanzfrequenz zu berechnen, wird folgende Formel verwendet\cite{v354}:
+\begin{equation}
+    \omega_{res} = \sqrt{\frac{1}{LC} - \frac{R^2}{2L^2}}
+\end{equation}
+Eingesetzt in die Formel für $\omega$, umgestellt und unter bedenken, dass $\frac{R^2}{2L^2} << \frac{1}{LC}$ gilt\cite{v354}:
+\begin{equation}
+    f_{res} = \frac{1}{2 \pi \sqrt{L \cdot C}}
+\end{equation}
+Die Kondensatorspannung in Frequenzabhängigkeit wird beschrieben durch\cite{v354}:
+\begin{equation}
+    U_C(\omega) = \frac{U_0}{\sqrt{(1 - \omega^2 L C)^2 + (\omega R C)^2}}
+\end{equation}
+Mit der Formel für $\omega$ ergibt sich:
+\begin{equation}
+    U_C(f) = \frac{U_0}{\sqrt{(1 - (2 \pi f)^2 L C)^2 + (2 \pi f R C)^2}}
+\end{equation}
+Die Phasenverschiebung ergibt sich aus der Formel\cite{v354}:
+\begin{equation}
+    \phi(\omega) = \arctan{\Bigl(\frac{-\omega R C}{1 - \omega^2 L C}\Bigr)}
+\end{equation}
+Mit der Formel für $\omega$ ergibt sich:
+\begin{equation}
+    \phi(f) = \arctan{\Bigl(\frac{-2 \pi f R C}{1 - (2 \pi f)^2 L C}\Bigr)}
+\end{equation}
+Die Güte Q des Schwingkreises wird beschrieben durch\cite{v354}:
+\begin{equation}
+     Q = \frac{1}{R} \cdot \sqrt{\frac{L}{C}}
+\end{equation}  
+Sie ist durch umstellen der Formel für die maximale Kondensatorspannung im Vergleich zur Erregerspannung gegeben\cite{v354}:
+\begin{equation}
+    U_{C,max} = \frac{1}{\omega_0 R C} \cdot U_0 = q \cdot U_0 
+\end{equation}
+Umgestellt ergibt sich:
+\begin{equation}
+    q = \frac{U_{C,max}}{U_0}
+\end{equation}
+Weiterhin besteht das Verhältnis zwischen Güte und Breite der Resonanzkurve\cite{v354}:
+\begin{equation}
+    q = \frac{w_{0}}{w_+ - w_-}
+\end{equation}
+Mit der Formel für $\omega$ ergibt sich:
+\begin{equation}
+    q = \frac{f_{0}}{f_+ - f_-}
+\end{equation}
