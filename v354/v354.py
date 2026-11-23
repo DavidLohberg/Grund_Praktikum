@@ -50,17 +50,18 @@ mess_Spannungen = np.array([
     1.24, -1.14, 1.06, -0.96, 0.86, -0.80, 0.72, -0.66, 0.6,
     -0.54, 0.46, -0.42, 0.4, -0.36, 0.32
 ])
+mess_Spannung= mess_Spannungen / 2
 mess_Zeit = np.array ([
     0, 20, 30, 50, 60, 75, 90, 105, 120, 135,
     150, 165, 180, 195, 210
 ])
-norm_Spannung = np.sqrt(mess_Spannungen * mess_Spannungen)
+norm_Spannung = np.sqrt(mess_Spannung * mess_Spannung)
 (a, b), cov = curve_fit(exp_func, mess_Zeit, norm_Spannung, p0 = (1.2, 0.006))
 t = np.linspace(0, 250, 400)
 fig, ax = plt.subplots()
 plt.scatter(
         mess_Zeit,
-        mess_Spannungen,
+        mess_Spannung,
         color="red",
         marker="x",
         s=60,
@@ -70,42 +71,33 @@ plt.scatter(
 plt.plot(t, exp_func(t, a, b), color = 'blue', label = 'fit')
 plt.plot(t, - exp_func(t, a, b), color = 'blue')
 plt.xlabel("t[µs]", fontsize=12)
-plt.ylabel("Spannung", fontsize=12)
+plt.ylabel("U[V]", fontsize=12)
 plt.grid(True)
 plt.legend()
 plt.savefig ('Exp_Abfall.pdf')
 #arctan2 
 
 T = 1/(mess_frequenz * 1000)
-print (T)
 a = np.array([
     0, 0, 0.3e-5, 0.3e-5, 0.3e-5,0.4e-5, 0.4e-5, 0.5e-5, 0.5e-5, 0.6e-5, 0.6e-5, 0.6e-5,
     0.7e-5, 0.7e-5, 0.8e-5, 0.8e-5, 0.8e-5, 0.9e-5, 0.9e-5, 1e-5, 1e-5, 1e-5, 1e-5, 0.9e-5
 ])
-phi_mess = -2 * np.pi * a / T
+phi_mess = 2 * np.pi * a / T
 def phi_theorie(f, R, L, C):
-    omega = 2 * np.pi * f * 1000
+    omega = -2 * np.pi * f * 1000
 
     return np.arctan2(
         -omega * R * C,
         1 - L * C * omega**2
     )
-
-
-# Fit der Parameter R, L und C
-
 p0 = [509.5, 10.11e-3, 2.098e-9]
-
 popt, pcov = curve_fit(
     phi_theorie,
     mess_frequenz,
     phi_mess,
-    p0=p0,
-    maxfev=20000
+    p0=p0
 )
-
 R_fit, L_fit, C_fit = popt
-
 print("Ergebnisse des Phasenfits:")
 print("R =", R_fit, "Ohm")
 print("L =", L_fit, "H")
@@ -119,6 +111,7 @@ ax.scatter(
     mess_frequenz,
     phi_mess,
     color="red",
+    marker = "x",
     label="Messwerte"
 )
 
