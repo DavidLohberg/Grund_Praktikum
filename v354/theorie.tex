@@ -19,6 +19,13 @@ Die Berechnung der Fehler geschieht über die Gaußsche Fehlerfortpflanzung.
 \begin{equation}
     u = \sqrt{\sum_{i=1}^{N} \Bigl(\frac{\partial f}{\partial x_{i}}\cdot u_i\Bigr)^2}
 \end{equation}    
+Die Einhüllende der gedämpften Schwingung mit I(t) wird beschrieben durch\cite{v354}:
+\begin{equation}
+    \pm e^{-\frac{R}{2L}t}
+\end{equation}  
+Da U(t) und I(t) proportional zueinander sind, gilt dies auch für die Spannung.
+\newline
+\newline
 Um den Widerstand zu berechnen, bei dem der aperiodischer Grenzfall eintritt, wird folgende Formel verwendet\cite{v354}:
 \begin{equation}
     {\frac{1}{LC}}= {\frac{R_{ap}^2}{4L^2}}
