@@ -78,7 +78,70 @@ Der Aperiodische Grenzfall wurde über ein vestellbaren Widerstand bestimmt, der
 Der Aperiodische Grenzfall trat beim ersten Versuch bei einem Widerstand von $R_{\text{exp1}} \approx 3200 \mathrm{\Omega}$ ein.
 Beim Zweiten Versuch trat der Aperiodische Grenzfall bei einem Widerstand von $R_{\text{exp2}} \approx 3160 \mathrm{\Omega}$ ein.
 \subsection{Frequenzabhängigkeit der Kondensatorspannung und Phase}
-
+Um die Frequenzabhängigkeit der Kondensatorspannung und der Phase zu bestimmen, 
+wurde die Spannung des Kondensators $U_C$ und die Spannung des Erregers $U_{Err}$ in Abhängigkeit der Frequenz $f$ gemessen, siehe Tabelle 2.
+\begin{table}[H]
+    \centering
+    \caption{Frequenzabhängigkeit der Kondensatorspannung und Phase}
+    \begin{tblr}{c c c c}
+    \toprule
+    Frequenz in $kHz$ & $U_C$ in V & $U_{Err}$ in V & Verschiebung \\
+    \midrule
+    10.0 & 1.05 & 0.8 & 0.00 \\
+    20.0 & 1.25 & 0.8 & 0.00 \\
+    27.9 & 2.05 & 0.8 & 0.3 \\
+    28.4 & 2.15 & 0.8 & 0.3 \\
+    28.9 & 2.25 & 0.8 & 0.3 \\
+    29.4 & 2.35 & 0.8 & 0.4 \\
+    29.9 & 2.45 & 0.8 & 0.4 \\
+    30.4 & 2.55 & 0.8 & 0.5 \\
+    30.9 & 2.65 & 0.8 & 0.5 \\
+    31.4 & 2.75 & 0.8 & 0.6 \\
+    31.9 & 2.85 & 0.8 & 0.6 \\
+    32.4 & 2.85 & 0.8 & 0.6 \\
+    32.9 & 2.85 & 0.8 & 0.7 \\
+    33.4 & 2.85 & 0.8 & 0.7 \\
+    33.9 & 2.80 & 0.8 & 0.8\\
+    34.4 & 2.70 & 0.8 & 0.8 \\
+    34.9 & 2.55 & 0.8 & 0.8 \\
+    35.4 & 2.45 & 0.8 & 0.9 \\
+    35.9 & 2.35 & 0.8 & 0.9 \\
+    36.4 & 2.15 & 0.8 & 1 \\
+    36.9 & 2.10 & 0.8 & 1\\
+    37.4 & 1.95 & 0.8 & 1 \\
+    37.9 & 1.85 & 0.8 & 1 \\
+    50.0 & 0.65 & 0.8 & 0.9 \\
+    \bottomrule
+    \end{tblr}
+\end{table}
+Damit ergibt sich die Resonanzfrequnez aus der Messung bei $f_{\text{res}} = 32,9 \mathrm{kHz}$.
+Die Theoriewerte für die Resonanzfrequenz und die Güte des Schwingkreises lassen sich über folgende Formeln bestimmen:
+\begin{equation}
+    f_{\text{res, Theorie}} = \frac{1}{2 \pi \sqrt{L \cdot C}} = 34,7 \mathrm{kHz}
+\end{equation}
+Und die Kondensatorspannung in abhängigkeit der Frequenz lässt sich über folgende Formel bestimmen:
+\begin{equation}
+    U_C(f) = \frac{U_0}{\sqrt{(1 - (2 \pi f)^2 L C)^2 + (2 \pi f R C)^2}}
+\end{equation}
+Den Plot der Kondensatorspannung und der Phase in Abhängigkeit der Frequenz ist in Abbildung 4 dargestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{v354/Spannungsamplitude.pdf}
+    \caption{Kondensatorspannung in Abhängigkeit der Frequenz}
+    \label{fig:amp}
+\end{figure}
+Die Phasenverschiebung lässt sich über folgende Formel bestimmen:
+\begin{equation}
+    \phi(f) = \arctan{\Bigl(\frac{-2 \pi f R C}{1 - (2 \pi f)^2 L C}\Bigr)}
+\end{equation}
+Die aus den Messwerten bestimmte Phasenverschiebung ist in abhängigkeit der Frequenz in Abbildung 5 dargestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{v354/Arctan2.pdf}
+    \caption{Phasenverschiebung in Abhängigkeit der Frequenz}
+    \label{fig:phase}
+\end{figure}
+\subsection{Güte des Schwingkreises}
 
 4 Wege Güte zu errechnen
 Theoriewert Resonanzbreite aus amp.plot%1/sqrt(2)

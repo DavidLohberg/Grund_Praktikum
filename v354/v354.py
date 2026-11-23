@@ -125,7 +125,15 @@ ax.plot(
     f_plot,
     phi_theorie(f_plot, *popt),
     color="blue",
-    label="Arctan2-Fit"
+    label="Fit"
+)
+theory_phi = phi_theorie(f_plot, R, L, C)
+ax.plot(
+    f_plot,
+    theory_phi,
+    color="green",
+    label="Theorieplot",
+    linestyle="--"
 )
 
 ax.set_xlabel("f [kHz]", fontsize=12)
