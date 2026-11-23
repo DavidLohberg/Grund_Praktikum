@@ -2,6 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import uncertainties.unumpy as unp
 from scipy.optimize import curve_fit
+def exp_func(x, a, b):
+    return a * np.exp(b * x)
+R = 509.5   
+L = 10.11e-3    
+C = 2.098e-9
+U0 = 0.8
 #PLot Frequenz-Spannung
 def exp_func(x, a, b):
     return a * np.exp(b * x)
@@ -36,9 +42,7 @@ plt.scatter(
         mess_UC_U0,
         color="red",
         marker="x",
-        s=60,
         label="Messwerte",
-        zorder=3
     )
 plt.xlabel("f[kHz]", fontsize=12)
 plt.ylabel("UC/U0", fontsize=12)
@@ -65,9 +69,7 @@ plt.scatter(
         mess_Spannung,
         color="red",
         marker="x",
-        s=60,
         label="Messwerte",
-        zorder=3
     )
 plt.plot(t, exp_func(t, a, b), color = 'blue', label = 'fit')
 plt.plot(t, - exp_func(t, a, b), color = 'blue')
@@ -76,13 +78,13 @@ plt.ylabel("U[V]", fontsize=12)
 plt.grid(True)
 plt.legend()
 plt.savefig ('Exp_Abfall.pdf')
-print(b)
+#Wiederrstandsberechnung
 r = 2*b *L *(-1)
 print(r)
 errors = np.sqrt(np.diag(cov))
 print(errors)
-#arctan2 
 
+#arctan2 
 T = 1/(mess_frequenz * 1000)
 a = np.array([
     0, 0, 0.3e-5, 0.3e-5, 0.3e-5,0.4e-5, 0.4e-5, 0.5e-5, 0.5e-5, 0.6e-5, 0.6e-5, 0.6e-5,
@@ -91,7 +93,6 @@ a = np.array([
 phi_mess = 2 * np.pi * a / T
 def phi_theorie(f, R, L, C):
     omega = -2 * np.pi * f * 1000
-
     return np.arctan2(
         -omega * R * C,
         1 - L * C * omega**2
@@ -104,15 +105,8 @@ popt, pcov = curve_fit(
     p0=p0
 )
 R_fit, L_fit, C_fit = popt
-print("Ergebnisse des Phasenfits:")
-print("R =", R_fit, "Ohm")
-print("L =", L_fit, "H")
-print("C =", C_fit, "F")
-
 f_plot = np.linspace(9, 59, 1000)
-
 fig, ax = plt.subplots()
-
 ax.scatter(
     mess_frequenz,
     phi_mess,
@@ -120,7 +114,6 @@ ax.scatter(
     marker = "x",
     label="Messwerte"
 )
-
 ax.plot(
     f_plot,
     phi_theorie(f_plot, *popt),
@@ -135,12 +128,14 @@ ax.plot(
     label="Theorieplot",
     linestyle="--"
 )
-
+plt.yticks(
+    [ 0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi,],
+    [r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$", r"$\frac{3\pi}{4}$", r"$\pi$"]
+)
 ax.set_xlabel("f [kHz]", fontsize=12)
 ax.set_ylabel("Phasenverschiebung [rad]", fontsize=12)
 ax.grid(True)
 ax.legend()
-
 plt.savefig('Arctan2.pdf')
 
 

@@ -13,7 +13,7 @@ Die Messwerte sind in Tabelle 1 dargestellt.
     \centering
     \begin{tblr}{c c c}
     \toprule
-    $Messung$ & $Spannung$  U in V & Zeit $\delta t$ in $\mu$s \\
+    $Messung$ & $Spannung$  U in V & Zeit $t$ in $\mu$s \\
     \midrule
     $T_0$ & 0.62 & 20 \\
     $T_1$ & 0.57 & 30 \\
@@ -43,7 +43,7 @@ Die Messwerte und der Fit sind in Abbildung 3 dargestellt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{v354/Exp_Abfall.pdf}
-    \caption{Messwerte und Fit der Zeitabhängigkeit der Amplitude}
+    \caption{Messwerte und Fit der Zeitabhängigkeit der Amplitude[\cite{matplotlib,numpy,scipy}]}
     \label{fig:exp_abfall}
 \end{figure}
 \noindent
@@ -72,6 +72,15 @@ Damit ergibt sich ein Widerstand von:
 \begin{equation}
     R_{\text{Theorie}} = 2 \cdot \sqrt{\frac{10,11 \cdot 10^{-3}}{2,089 \cdot 10^{-6}}} = 4399,83 \mathrm{\Omega}
 \end{equation}
+mit einer Ungenauigkeit von:
+\begin{gather}
+    \Delta R = \sqrt{(\frac{\partial R}{\partial L} \cdot \Delta L)^2 + (\frac{\partial R}{\partial C} \cdot \Delta C)^2}\\
+    \Delta R = 2 \cdot \sqrt{(\frac{1}{2} \cdot \frac{1}{\sqrt{L \cdot C}} \cdot \Delta L)^2 + (-\frac{1}{2} \cdot \frac{L}{C^{\frac{3}{2}}} \cdot \Delta C)^2}
+\end{gather}
+Damit ergibt sich ein Widerstand von:
+\begin{equation}
+    R_{\text{Theorie}} = 4399,83 \pm 6,57 \mathrm{\Omega}
+\end{equation}
 Der Aperiodische Grenzfall wurde über ein vestellbaren Widerstand bestimmt, der zwischen 1 und 10000 Ohm einstellbar ist.
  Der Widerstand wurde zunächst auf seinen Maximalwert eingestellt und dann langsam verringert, bis der Aperiodische Grenzfall eintrat. 
  Danach wurde der Widerstand auf seinen Minimalwert eingestellt und langsam erhöht, bis der Aperiodische Grenzfall eintrat. 
@@ -85,40 +94,47 @@ wurde die Spannung des Kondensators $U_C$ und die Spannung des Erregers $U_{Err}
     \caption{Frequenzabhängigkeit der Kondensatorspannung und Phase}
     \begin{tblr}{c c c c}
     \toprule
-    Frequenz in $kHz$ & $U_C$ in V & $U_{Err}$ in V & Verschiebung \\
+    Frequenz in $kHz$ & $U_C$ in V & $U_{Err}$ in V & Verschiebung um $\mu s$ \\
     \midrule
-    10.0 & 1.05 & 0.8 & 0.00 \\
-    20.0 & 1.25 & 0.8 & 0.00 \\
-    27.9 & 2.05 & 0.8 & 0.3 \\
-    28.4 & 2.15 & 0.8 & 0.3 \\
-    28.9 & 2.25 & 0.8 & 0.3 \\
-    29.4 & 2.35 & 0.8 & 0.4 \\
-    29.9 & 2.45 & 0.8 & 0.4 \\
-    30.4 & 2.55 & 0.8 & 0.5 \\
-    30.9 & 2.65 & 0.8 & 0.5 \\
-    31.4 & 2.75 & 0.8 & 0.6 \\
-    31.9 & 2.85 & 0.8 & 0.6 \\
-    32.4 & 2.85 & 0.8 & 0.6 \\
-    32.9 & 2.85 & 0.8 & 0.7 \\
-    33.4 & 2.85 & 0.8 & 0.7 \\
-    33.9 & 2.80 & 0.8 & 0.8\\
-    34.4 & 2.70 & 0.8 & 0.8 \\
-    34.9 & 2.55 & 0.8 & 0.8 \\
-    35.4 & 2.45 & 0.8 & 0.9 \\
-    35.9 & 2.35 & 0.8 & 0.9 \\
-    36.4 & 2.15 & 0.8 & 1 \\
-    36.9 & 2.10 & 0.8 & 1\\
-    37.4 & 1.95 & 0.8 & 1 \\
-    37.9 & 1.85 & 0.8 & 1 \\
-    50.0 & 0.65 & 0.8 & 0.9 \\
+    10.0 & 1.05 & 0.8 & 0 \\
+    20.0 & 1.25 & 0.8 & 0\\
+    27.9 & 2.05 & 0.8 & 3 \\
+    28.4 & 2.15 & 0.8 & 3 \\
+    28.9 & 2.25 & 0.8 & 3 \\
+    29.4 & 2.35 & 0.8 & 4 \\
+    29.9 & 2.45 & 0.8 & 4 \\
+    30.4 & 2.55 & 0.8 & 5 \\
+    30.9 & 2.65 & 0.8 & 5 \\
+    31.4 & 2.75 & 0.8 & 6 \\
+    31.9 & 2.85 & 0.8 & 6 \\
+    32.4 & 2.85 & 0.8 & 6 \\
+    32.9 & 2.85 & 0.8 & 7 \\
+    33.4 & 2.85 & 0.8 & 7 \\
+    33.9 & 2.80 & 0.8 & 8 \\
+    34.4 & 2.70 & 0.8 & 8 \\
+    34.9 & 2.55 & 0.8 & 8 \\
+    35.4 & 2.45 & 0.8 & 9 \\
+    35.9 & 2.35 & 0.8 & 9 \\
+    36.4 & 2.15 & 0.8 & 10 \\
+    36.9 & 2.10 & 0.8 & 10\\
+    37.4 & 1.95 & 0.8 & 10 \\
+    37.9 & 1.85 & 0.8 & 10 \\
+    50.0 & 0.65 & 0.8 & 9 \\
     \bottomrule
     \end{tblr}
 \end{table}
-Damit ergibt sich die Resonanzfrequnez aus der Messung bei $f_{\text{res}} = 32,9 \mathrm{kHz}$.
+\noindent
+Gemessen wurde eine Resonanzfrequenz von $f_{\text{res}} = 32,9 \mathrm{kHz}$.
 Die Theoriewerte für die Resonanzfrequenz und die Güte des Schwingkreises lassen sich über folgende Formeln bestimmen:
 \begin{equation}
     f_{\text{res, Theorie}} = \frac{1}{2 \pi \sqrt{L \cdot C}} = 34,7 \mathrm{kHz}
 \end{equation}
+Mit einer Ungenauigkeit von:
+\begin{gather}
+    \Delta f_{\text{res, Theorie}} = \sqrt{(\frac{\partial f_{\text{res}}}{\partial L} \cdot \Delta L)^2 + (\frac{\partial f_{\text{res}}}{\partial C} \cdot \Delta C)^2} \\
+    \Delta f_{\text{res, Theorie}} = \sqrt{(-\frac{1}{4 \pi} \cdot \frac{1}{\sqrt{L^3 \cdot C}} \cdot \Delta L)^2 + (-\frac{1}{4 \pi} \cdot \frac{1}{\sqrt{L \cdot C^3}} \cdot \Delta C)^2}
+    f_{\text{res, Theorie}} = 34,7 \pm 0,1 \mathrm{kHz}
+\end{gather}
 Und die Kondensatorspannung in abhängigkeit der Frequenz lässt sich über folgende Formel bestimmen:
 \begin{equation}
     U_C(f) = \frac{U_0}{\sqrt{(1 - (2 \pi f)^2 L C)^2 + (2 \pi f R C)^2}}
@@ -127,7 +143,7 @@ Den Plot der Kondensatorspannung und der Phase in Abhängigkeit der Frequenz ist
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{v354/Spannungsamplitude.pdf}
-    \caption{Kondensatorspannung in Abhängigkeit der Frequenz}
+    \caption{Kondensatorspannung in Abhängigkeit der Frequenz[\cite{matplotlib,numpy}]}
     \label{fig:amp}
 \end{figure}
 Die Phasenverschiebung lässt sich über folgende Formel bestimmen:
@@ -138,12 +154,72 @@ Die aus den Messwerten bestimmte Phasenverschiebung ist in abhängigkeit der Fre
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{v354/Arctan2.pdf}
-    \caption{Phasenverschiebung in Abhängigkeit der Frequenz}
+    \caption{Phasenverschiebung in Abhängigkeit der Frequenz[\cite{matplotlib,numpy}]}
     \label{fig:phase}
 \end{figure}
 \subsection{Güte des Schwingkreises}
+Die Güte des Schwingkreises ist in der Theorie über folgende Formel definiert:
+\begin{equation}
+    Q = \frac{1}{R} \cdot \sqrt{\frac{L}{C}}
+\end{equation}
+Mit den Werten der Bauteile ergibt sich eine Güte von:
+\begin{equation}
+    Q = \frac{1}{509,5} \cdot \sqrt{\frac{10,11 \cdot 10^{-3}}{2,089 \cdot 10^{-6}}} = 4,35
+\end{equation}
+mit einer Ungenauigkeit von:
+\begin{gather}
+    \Delta Q = \sqrt{(\frac{\partial Q}{\partial R} \cdot \Delta R)^2 + (\frac{\partial Q}{\partial L} \cdot \Delta L)^2 + (\frac{\partial Q}{\partial C} \cdot \Delta C)^2}\\
+    \Delta Q = \sqrt{(-\frac{1}{R^2} \cdot \sqrt{\frac{L}{C}} \cdot \Delta R)^2 + (\frac{1}{2 R} \cdot \frac{1}{\sqrt{L C}} \cdot \Delta L)^2 + (-\frac{1}{2 R} \cdot \frac{L}{C^{\frac{3}{2}}} \cdot \Delta C)^2}
+\end{gather}
+Damit ergibt sich eine Güte von:
+\begin{equation}
+    Q = 4,35 \pm 0,01
+\end{equation}
+Es gibt drei verschiedene Möglichkeiten die Güte des Schwingkreises zu bestimmen.
+Der erste Weg ist die Güte über die Amplitude der Resonanzfrequenz zu bestimmen. Die Güte lässt sich über folgende Formel bestimmen:
+\begin{equation}
+    Q = \frac{U_C(f_{\text{res}})}{U_0} = 3,56
+\end{equation}
+Der zweite Weg ist die Güte über die Resonanzbreite zu bestimmen. Die Resonanzbreite lässt sich über die Frequenzen bestimmen, bei denen die Kondensatorspannung $U_C$ um den Faktor $\frac{1}{\sqrt{2}}$ kleiner ist als die Kondensatorspannung bei der Resonanzfrequenz.
+Diese Punkte sind ca bei 27,9 und 36,9 kHz. Die Resonanzbreite lässt sich über diese Formel bestimmen:
+\begin{equation}
+    Q = \frac{f_{\text{res}}}{f_2 - f_1} = \frac{32,9}{36,9 - 27,9} = 3,66
+\end{equation}
+Der dritte Weg ist die Güte über die Phasenverschiebung zu bestimmen. Die Resonanzbreite lässt sich über die Frequenzen bestimmen, 
+bei denen die Phasenverschiebung 45 und 135 Grad beträgt. 
+Diese Punkte sind ca bei 29,4 und 36,4 kHz. Die Resonanzbreite lässt sich über folgende Formel bestimmen:
+\begin{equation}
+    Q = \frac{f_{\text{res}}}{f_2 - f_1} = \frac{32,9}{36,4 - 29,4} = 4,70
+\end{equation}
 
-4 Wege Güte zu errechnen
-Theoriewert Resonanzbreite aus amp.plot%1/sqrt(2)
-Hochpunkt aus amp.plot
-resonanzbreite aus phasen.plot (45,90,135 grad)
+\subsection{Diskussion}
+In den Versuch der Zeitabhängigkeit der Amplitude wurde ein Widerstand von $R_{\text{Fit}} = 130,39 \pm 2,08 \mathrm{\Omega}$ bestimmt.
+Der Wert liegt deutlich unter dem Wert des Widerstands $R_1 = 48,1 \pm 0,1 \mathrm{\Omega}$, der in den Versuchen verwendet wurde.
+Der Grund dafür ist, dass der Widerstand des Schwingkreises nicht nur aus dem Widerstand $R_1$ besteht, sondern auch aus dem Widerstand der Spule und dem Widerstand des Kondensators
+und der Leitungen. Diese Widerstände sind in der Theorie nicht berücksichtigt worden.
+
+\noindent
+In dem Versuch des Aperiodischen Grenzfalls wurde ein Widerstand von $R_{\text{exp1}} \approx 3200 \mathrm{\Omega}$ und $R_{\text{exp2}} \approx 3160 \mathrm{\Omega}$ bestimmt. 
+Die Werte liegen deutlich unter dem Wert des Widerstands $R_{\text{Theorie}} = 4399,83 \pm 6,57 \mathrm{\Omega}$, der in der Theorie bestimmt wurde.
+Auch hier ist der Grund, dass der Widerstand des Schwingkreises nicht nur aus dem Widerstand $R_2$ besteht, sondern auch aus dem Widerstand der Spule und dem Widerstand des Kondensators
+und der Leitungen. Diese Widerstände sind in der Theorie nicht berücksichtigt worden.
+
+\noindent
+In dem Versuch der Frequenzabhängigkeit der Kondensatorspannung und Phase wurde eine Resonanzfrequenz von $f_{\text{res}} = 32,9 \mathrm{kHz}$ bestimmt. Der Wert liegt deutlich unter dem Wert der 
+Resonanzfrequenz $f_{\text{res, Theorie}} = 34,7 \pm 0,1 \mathrm{kHz}$, der in der Theorie bestimmt wurde. Hierfür gibt es mehere Gründe.
+Zum einen fällt auf, dass die gemessene Resonanzfrequnz bzw. der Hochpunkt der Kondensatorspannung
+bei meheren Messpunkten auf dem Hochpunkt liegt.
+Dann gibt es auch die Fehler der Messgeräte, die nicht berücksichtigt wurden.
+Und es gibt noch den Menschenlichen Fehler, der bei der Messung der Resonanzfrequenz aufgetreten kann.
+
+\noindent
+In dem Versuch der Güte des Schwingkreises wurde eine Güte von $Q = 4,35 \pm 0,01$ bestimmt. Der Wert liegt deutlich über dem Wert 
+der Güte $Q = 3,56$ der über die Amplitude bestimmt wurde.
+Der Wert liegt deutlich über dem Wert der Güte $Q = 3,66$ der über die Resonanzbreite bestimmt wurde.
+Der Wert liegt deutlich unter dem Wert der Güte $Q = 4,70$ der über die Phasenverschiebung bestimmt wurde.
+Bei allen drei Methoden zur Bestimmung der Güte des Schwingkreises gibt es Fehlerquellen, die nicht berücksichtigt wurden.
+Beim Theorie Wert der Güte des Schwingkreises wurde der Widerstand des Schwingkreises nicht berücksichtigt, der aus dem Widerstand der Spule und dem Widerstand des Kondensators besteht und der Leitungen. Diese Widerstände sind in der Theorie nicht berücksichtigt worden.
+Bei allen drei Methoden wurde die Ungenauigkeit der Messgeräte nicht berücksichtigt.
+Bei allen drei Methoden wurde der Menschliche Fehler nicht berücksichtigt.
+Bei der Methode der Resonanzbreite und der Phasenverschiebung wurden ungefähre Messungen zur Bestimmung der Frequenz der Resonanzbreite durchgeführt, die zu einer Ungenauigkeit der Güte führen können.
+Dazu musste bei der Methode der Phasenverschiebung bestimmt werden, bei der auch die Ungenauigkeit der Verschiebung a nicht berücksichtigt wurde.
